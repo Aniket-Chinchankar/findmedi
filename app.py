@@ -7,7 +7,7 @@ import onnxruntime as ort
 from PIL import Image
 import pytesseract
 import io
-
+import easyocr
 # Load CSV
 df = pd.read_csv("medicines.csv")[['Medicine Name', 'Uses']].dropna()
 uses_list = df['Uses'].tolist()
@@ -17,9 +17,13 @@ tokenizer = AutoTokenizer.from_pretrained("sentence-transformers/all-MiniLM-L6-v
 ort_session = ort.InferenceSession("sentence_model.onnx")
 
 # OCR Function
-def extract_text_from_image(image):
-    image = Image.open(image)
-    return pytesseract.image_to_string(image)
+
+
+def extract_text_from_image(image_file):
+    reader = easyocr.Reader(['en'])
+    image = Image.open(image_file)
+    result = reader.readtext(np.array(image))
+    return " ".join([text[1] for text in result])
 
 # Encode text using ONNX model
 def encode_text_with_onnx(text):
