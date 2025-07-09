@@ -1,3 +1,4 @@
+torch
 streamlit
 pandas
 numpy
@@ -6,3 +7,4 @@ scikit-learn
 pillow
 pytesseract
 transformers
+
