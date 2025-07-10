@@ -1,10 +1,9 @@
-torch
 streamlit
 pandas
 numpy
-onnxruntime
 scikit-learn
+onnxruntime
+sentence-transformers==2.2.2
 pillow
-pytesseract
 easyocr
-transformers==4.40.1
+
