@@ -6,6 +6,5 @@ onnxruntime
 scikit-learn
 pillow
 pytesseract
-transformers
 easyocr
-
+transformers==4.40.1
